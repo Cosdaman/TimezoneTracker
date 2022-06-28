@@ -11,8 +11,9 @@ const Home = () => {
   return (
     <>
       <Container>
-Wao
-meido WIP
+        Wao
+        meido WIP
+        
       </Container>
     </>
   );
