@@ -13,7 +13,7 @@ const Home = () => {
       <Container>
         Wao
         meido WIP
-        
+
       </Container>
     </>
   );

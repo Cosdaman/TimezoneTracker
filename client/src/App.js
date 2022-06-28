@@ -1,31 +1,34 @@
 import './App.css';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import Header from './components/Header';
 import Home from './pages/Home';
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 
 function App() {
   return (
-    <Router>
-      <>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
-          <Route
-            path="/login"
-            element={<Home />}
-          />
-          <Route
-            path="*"
-            element={<h1 className="display-2">Wrong page!</h1>}
-          />
-        </Routes>
-      </>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route
+                path="/"
+                element={<Home />}
+              />
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
